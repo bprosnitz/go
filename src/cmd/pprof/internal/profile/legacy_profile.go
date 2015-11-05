@@ -1213,7 +1213,7 @@ var allocRxStr = strings.Join([]string{
 	`__builtin_(vec_)?delete`,
 	`__builtin_(vec_)?new`,
 	`__gnu_cxx::new_allocator::allocate`,
-	`__libc_malloc`,
+	//`__libc_malloc`,
 	`__malloc_alloc_template::allocate`,
 	`allocate`,
 	`cpp_alloc`,

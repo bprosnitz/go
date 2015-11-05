@@ -129,7 +129,7 @@ func equal(name1, name2 string) (r bool) {
 
 // localTmp returns a local temporary directory not on NFS.
 func localTmp() string {
-	switch runtime.GOOS {
+/*	switch runtime.GOOS {
 	case "android", "windows":
 		return TempDir()
 	case "darwin":
@@ -139,6 +139,8 @@ func localTmp() string {
 		}
 	}
 	return "/tmp"
+*/
+return TempDir()
 }
 
 func newFile(testName string, t *testing.T) (f *File) {

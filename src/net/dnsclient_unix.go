@@ -432,6 +432,7 @@ func goLookupIPOrder(name string, order hostLookupOrder) (addrs []IPAddr, err er
 			return addrs, nil
 		}
 	}
+
 	if !isDomainName(name) {
 		return nil, &DNSError{Err: "invalid domain name", Name: name}
 	}
@@ -472,12 +473,12 @@ func goLookupIPOrder(name string, order hostLookupOrder) (addrs []IPAddr, err er
 		lastErr.Name = name
 	}
 	sortByRFC6724(addrs)
-	if len(addrs) == 0 {
+        if len(addrs) == 0 {
+		if order == hostLookupDNSFiles {
+			return goLookupIPFiles(name), nil
+		}
 		if lastErr != nil {
 			return nil, lastErr
-		}
-		if order == hostLookupDNSFiles {
-			addrs = goLookupIPFiles(name)
 		}
 	}
 	return addrs, nil
